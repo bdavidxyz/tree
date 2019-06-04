@@ -28,13 +28,13 @@
   window.main_store = Redux.createStore(reducer, global_state);
 
   // DISPATCHERS
-  $(".and_button").on("click", function(e){
+  $(".and").on("click", function(e){
     main_store.dispatch({
       type: 'AND_CLICKED', 
       value: 42
     })
   });
-  $(".or_button").on("click", function(e){
+  $(".or").on("click", function(e){
     main_store.dispatch({
       type: 'OR_CLICKED', 
       value: 42
