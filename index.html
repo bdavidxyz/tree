@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>tree</title>
+</head>
+<body>
+
+<h1>Vous pouvez associer des règles</h1>
+
+<div class="root">
+  <div class="component">
+    <div class="horizontal" style="display: flex">
+      <select id="root">
+      </select>      
+      <div class="action action-h">
+        <button>AND</button>
+        <button>OR</button>
+      </div>    
+    </div>
+    <div class="action action-v">
+      <button>AND</button>
+      <button>OR</button>
+    </div>    
+  </div>
+</div>
+
+
+<script type="text/javascript" src="./lib/lodash.js"></script>
+<script type="text/javascript" src="./lib/jquery.js"></script>
+<script type="text/javascript" src="./lib/jquery-select.js"></script>
+<script type="text/javascript" src="./lib/redux.js"></script>
+<script type="text/javascript" src="./src/rules.js"></script>
+<script type="text/javascript" src="./src/main.js"></script>
+</body>
+</html>
