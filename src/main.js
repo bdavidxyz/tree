@@ -5,7 +5,7 @@
 
   // INIT STATE
   var global_state = {
-
+    rules:[]
   };
 
 
@@ -16,7 +16,7 @@
     var newState = _.cloneDeep(state);
 
     if (action.type === 'INIT') {
-      // do nothing
+      rules.push({id:"r_majeur"})
     } else if (action.type === 'AND_CLICKED') {
       newState.what = action.value
     }
