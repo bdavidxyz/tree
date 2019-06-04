@@ -4,7 +4,9 @@
 
   // INIT STATE
   var global_state = {
-    rules:[]
+    root_rule:{
+      slave_rules: []
+    }
   };
 
   // REDUCER
@@ -14,7 +16,7 @@
     var newState = _.cloneDeep(state);
 
     if (action.type === 'INIT') {
-      newState.rules.push({id:"r_rsa"})
+      newState.root_rule.slave_rules.push({id:"r_rsa"})
     } else if (action.type === 'AND_CLICKED') {
       newState.what = action.value
     }
@@ -43,7 +45,7 @@
     $("#root").empty();
     var state = _.cloneDeep(main_store.getState());
 
-    _.each(state.rules, function(rule, index){
+    _.each(state.root_rule.slave_rules, function(rule, index){
       var id = "rule_" + index;
       $("#root").append("<div id='" + id + "'></div>");
       $("#" + id).boxify({selected: rule.id})
