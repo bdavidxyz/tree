@@ -23,6 +23,7 @@
        settings.complete.call(this);
      }
    });
+
  }
 
 }(jQuery));

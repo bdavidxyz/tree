@@ -7,6 +7,7 @@
             selected: null,
             andclick: null,
             orclick: null,
+            id: null
         };
         var settings = $.extend({}, defaults, options);
         if (this.length > 1) {
@@ -28,7 +29,7 @@
             this.html('\
                 <div class="component">\
                     <div class="horizontal" style="display: flex">\
-                        <select id="root"></select>\
+                        <select id="' + settings.id + '"></select>\
                         <div class="action action-h">\
                             <button class="and">ET</button>\
                             <button class="or">OU</button>\

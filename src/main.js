@@ -55,7 +55,7 @@
     _.each(state.root_rule.slave_rules, function(rule, index){
       var id = "rule_" + index
       $("#root").append("<section id='" + id + "'></section>")
-      $("#" + id).boxify({selected: rule.id, orclick: $orclick, andclick: $andclick})
+      $("#" + id).boxify({id: "sel_"+id, selected: rule.id, orclick: $orclick, andclick: $andclick})
       if (state.root_rule.composition_type === "AND") {
         $("#" + id).after("<div class='andor'>ET</div>")
       } else {
@@ -64,6 +64,8 @@
     });
     
     $(".andor").last().remove()
+
+    $("section select").select2()
   });
 
   main_store.dispatch({type: 'INIT' })
