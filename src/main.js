@@ -57,11 +57,13 @@
       $("#root").append("<section id='" + id + "'></section>")
       $("#" + id).boxify({selected: rule.id, orclick: $orclick, andclick: $andclick})
       if (state.root_rule.composition_type === "AND") {
-        $("#" + id).after("<div>ET</div>")
+        $("#" + id).after("<div class='andor'>ET</div>")
       } else {
-        $("#" + id).after("<div>OU</div>")
+        $("#" + id).after("<div class='andor'>OU</div>")
       }
     });
+    
+    $(".andor").last().remove()
   });
 
   main_store.dispatch({type: 'INIT' })
