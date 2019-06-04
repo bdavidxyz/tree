@@ -2,12 +2,10 @@
 
   $("#root").fillValues({datas:window.rules});
 
-
   // INIT STATE
   var global_state = {
     rules:[]
   };
-
 
   // REDUCER
   var reducer = function(state, action) {
@@ -22,7 +20,6 @@
     }
     return newState;
   }
-
 
   // MAIN STORE
   window.main_store = Redux.createStore(reducer, global_state);
@@ -45,15 +42,15 @@
   main_store.subscribe(function(){
     $("#root").empty();
     var state = _.cloneDeep(main_store.getState());
+
     _.each(state.rules, function(rule, index){
       var id = "rule_" + index;
       $("#root").append("<div id='" + id + "'></div>");
       $("#" + id).boxify({selected: rule.id})
-    })  
+    });
   });
 
   main_store.dispatch({type: 'INIT' })
-
 
 }());
 
