@@ -24,59 +24,34 @@
   }
 
   // MAIN STORE
-  window.main_store = Redux.createStore(reducer, global_state);
+  window.main_store = Redux.createStore(reducer, global_state)
 
   // DISPATCHERS
-  $(".and").on("click", function(e){
+  var $andclick = function(e){
     main_store.dispatch({
       type: 'AND_CLICKED', 
-      value: 42
+      value: $(e.currentTarget).closest("section").attr("id")
     })
-  });
-  $(".or").on("click", function(e){
+  };
+  var $orclick = function(e){
     main_store.dispatch({
       type: 'OR_CLICKED', 
-      value: 42
+      value: $(e.currentTarget).closest("section").attr("id")
     })
-  });
+  };
 
   // SUBSCRIBERS
   main_store.subscribe(function(){
-    $("#root").empty();
-    var state = _.cloneDeep(main_store.getState());
+    $("#root").empty()
+    var state = _.cloneDeep(main_store.getState())
 
     _.each(state.root_rule.slave_rules, function(rule, index){
-      var id = "rule_" + index;
-      $("#root").append("<div id='" + id + "'></div>");
-      $("#" + id).boxify({selected: rule.id})
+      var id = "rule_" + index
+      $("#root").append("<section id='" + id + "'></section>")
+      $("#" + id).boxify({selected: rule.id, orclick: $orclick, andclick: $andclick})
     });
   });
 
   main_store.dispatch({type: 'INIT' })
 
 }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
