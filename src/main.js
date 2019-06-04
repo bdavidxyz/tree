@@ -16,7 +16,7 @@
     var newState = _.cloneDeep(state);
 
     if (action.type === 'INIT') {
-      rules.push({id:"r_majeur"})
+      newState.rules.push({id:"r_rsa"})
     } else if (action.type === 'AND_CLICKED') {
       newState.what = action.value
     }
@@ -40,6 +40,20 @@
       value: 42
     })
   });
+
+  // SUBSCRIBERS
+  main_store.subscribe(function(){
+    $("#root").empty();
+    var state = _.cloneDeep(main_store.getState());
+    _.each(state.rules, function(rule, index){
+      var id = "rule_" + index;
+      $("#root").append("<div id='" + id + "'></div>");
+      $("#" + id).boxify({selected: rule.id})
+    })  
+  });
+
+  main_store.dispatch({type: 'INIT' })
+
 
 }());
 
