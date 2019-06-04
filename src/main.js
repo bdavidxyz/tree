@@ -5,7 +5,8 @@
   // INIT STATE
   var global_state = {
     root_rule:{
-      slave_rules: []
+      slave_rules: [],
+      composition_type: null
     }
   };
 
@@ -18,6 +19,12 @@
     if (action.type === 'INIT') {
       newState.root_rule.slave_rules.push({id:"r_rsa"})
     } else if (action.type === 'AND_CLICKED') {
+      newState.root_rule.slave_rules.push({id:"r_rsa"})
+      newState.root_rule.composition_type = "AND"
+      newState.what = action.value
+    } else if (action.type === 'OR_CLICKED') {
+      newState.root_rule.slave_rules.push({id:"r_rsa"})
+      newState.root_rule.composition_type = "OR"
       newState.what = action.value
     }
     return newState;
